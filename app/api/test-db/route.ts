@@ -1,16 +1,16 @@
 import { NextResponse } from "next/server";
-import connectDB from "@/lib/db";
-import Contact from "@/models/Contact";
+import { prisma } from "@/lib/db";
 
 export async function GET() {
   try {
-    await connectDB();
-    
-    // Get the latest 5 messages
-    const messages = await Contact.find({})
-      .sort({ createdAt: -1 })
-      .limit(5);
-    
+    // Get the latest 5 messages using Prisma
+    const messages = await prisma.contact.findMany({
+      take: 5,
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
     return NextResponse.json({ messages });
   } catch (error) {
     console.error("Database test error:", error);
