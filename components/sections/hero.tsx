@@ -72,10 +72,16 @@ export default function Hero() {
                   Hire Me
                 </Button>
               </Link>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                <Download className="mr-2 h-5 w-5" />
-                Download CV
-              </Button>
+              <Link href="/Anam_Sayyed_port1.pdf" target="_blank" download>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  Download CV
+                </Button>
+              </Link>
             </div>
 
             {/* Stats */}
